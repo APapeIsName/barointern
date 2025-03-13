@@ -6,6 +6,12 @@
 	objectVersion = 77;
 	objects = {
 
+/* Begin PBXBuildFile section */
+		3C4D9997088782AA7ADBD283 /* Pods_barointern.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3AD2E4A1DCBA905BE4847163 /* Pods_barointern.framework */; };
+		65536C55AA8E7AAB2A4441E6 /* Pods_barointern_barointernUITests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0B7473E474A90EF7FEC7AB24 /* Pods_barointern_barointernUITests.framework */; };
+		959339F6A9236AF67D5340E3 /* Pods_barointernTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6BFC9FFF888075C87856DBD1 /* Pods_barointernTests.framework */; };
+/* End PBXBuildFile section */
+
 /* Begin PBXContainerItemProxy section */
 		0C11F54C2D82BFDA00F5FF25 /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
@@ -24,9 +30,18 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
-		0C11F5322D82BFD900F5FF25 /* barointern.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = barointern.app; sourceTree = BUILT_PRODUCTS_DIR; };
-		0C11F54B2D82BFDA00F5FF25 /* barointernTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = barointernTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
-		0C11F5552D82BFDA00F5FF25 /* barointernUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = barointernUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		06C2B88D5F38C4F224D1F500 /* Pods-barointern-barointernUITests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-barointern-barointernUITests.release.xcconfig"; path = "Target Support Files/Pods-barointern-barointernUITests/Pods-barointern-barointernUITests.release.xcconfig"; sourceTree = "<group>"; };
+		0B7473E474A90EF7FEC7AB24 /* Pods_barointern_barointernUITests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_barointern_barointernUITests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		0CD16C112D82F014006F6B03 /* barointern.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = barointern.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		0CD16C122D82F014006F6B03 /* barointernTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = barointernTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		0CD16C132D82F014006F6B03 /* barointernUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = barointernUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		17356537EE3D77372D6AD008 /* Pods-barointernTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-barointernTests.release.xcconfig"; path = "Target Support Files/Pods-barointernTests/Pods-barointernTests.release.xcconfig"; sourceTree = "<group>"; };
+		3AD2E4A1DCBA905BE4847163 /* Pods_barointern.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_barointern.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		645E23AC637FDDBD53A8CF85 /* Pods-barointern.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-barointern.debug.xcconfig"; path = "Target Support Files/Pods-barointern/Pods-barointern.debug.xcconfig"; sourceTree = "<group>"; };
+		6BFC9FFF888075C87856DBD1 /* Pods_barointernTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_barointernTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		778128F7071A6CFD8708F2EA /* Pods-barointern.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-barointern.release.xcconfig"; path = "Target Support Files/Pods-barointern/Pods-barointern.release.xcconfig"; sourceTree = "<group>"; };
+		9A9DE5111F21678A04AF59D8 /* Pods-barointern-barointernUITests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-barointern-barointernUITests.debug.xcconfig"; path = "Target Support Files/Pods-barointern-barointernUITests/Pods-barointern-barointernUITests.debug.xcconfig"; sourceTree = "<group>"; };
+		B8D4692610EF477CE9219DD9 /* Pods-barointernTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-barointernTests.debug.xcconfig"; path = "Target Support Files/Pods-barointernTests/Pods-barointernTests.debug.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFileSystemSynchronizedBuildFileExceptionSet section */
@@ -65,6 +80,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				3C4D9997088782AA7ADBD283 /* Pods_barointern.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -72,6 +88,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				959339F6A9236AF67D5340E3 /* Pods_barointernTests.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -79,6 +96,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				65536C55AA8E7AAB2A4441E6 /* Pods_barointern_barointernUITests.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -91,18 +109,35 @@
 				0C11F5342D82BFD900F5FF25 /* barointern */,
 				0C11F54E2D82BFDA00F5FF25 /* barointernTests */,
 				0C11F5582D82BFDA00F5FF25 /* barointernUITests */,
-				0C11F5332D82BFD900F5FF25 /* Products */,
+				C58776095758C08DE8D97912 /* Pods */,
+				5E98CCE17B8215CF9FFF2CD1 /* Frameworks */,
+				0CD16C112D82F014006F6B03 /* barointern.app */,
+				0CD16C122D82F014006F6B03 /* barointernTests.xctest */,
+				0CD16C132D82F014006F6B03 /* barointernUITests.xctest */,
 			);
 			sourceTree = "<group>";
 		};
-		0C11F5332D82BFD900F5FF25 /* Products */ = {
+		5E98CCE17B8215CF9FFF2CD1 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
-				0C11F5322D82BFD900F5FF25 /* barointern.app */,
-				0C11F54B2D82BFDA00F5FF25 /* barointernTests.xctest */,
-				0C11F5552D82BFDA00F5FF25 /* barointernUITests.xctest */,
+				3AD2E4A1DCBA905BE4847163 /* Pods_barointern.framework */,
+				0B7473E474A90EF7FEC7AB24 /* Pods_barointern_barointernUITests.framework */,
+				6BFC9FFF888075C87856DBD1 /* Pods_barointernTests.framework */,
 			);
-			name = Products;
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		C58776095758C08DE8D97912 /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				645E23AC637FDDBD53A8CF85 /* Pods-barointern.debug.xcconfig */,
+				778128F7071A6CFD8708F2EA /* Pods-barointern.release.xcconfig */,
+				9A9DE5111F21678A04AF59D8 /* Pods-barointern-barointernUITests.debug.xcconfig */,
+				06C2B88D5F38C4F224D1F500 /* Pods-barointern-barointernUITests.release.xcconfig */,
+				B8D4692610EF477CE9219DD9 /* Pods-barointernTests.debug.xcconfig */,
+				17356537EE3D77372D6AD008 /* Pods-barointernTests.release.xcconfig */,
+			);
+			path = Pods;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -112,9 +147,11 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 0C11F55E2D82BFDA00F5FF25 /* Build configuration list for PBXNativeTarget "barointern" */;
 			buildPhases = (
+				8D16A556C947206121305650 /* [CP] Check Pods Manifest.lock */,
 				0C11F52E2D82BFD900F5FF25 /* Sources */,
 				0C11F52F2D82BFD900F5FF25 /* Frameworks */,
 				0C11F5302D82BFD900F5FF25 /* Resources */,
+				D5CEEBBFD3709B75AE84DF10 /* [CP] Embed Pods Frameworks */,
 			);
 			buildRules = (
 			);
@@ -124,16 +161,15 @@
 				0C11F5342D82BFD900F5FF25 /* barointern */,
 			);
 			name = barointern;
-			packageProductDependencies = (
-			);
 			productName = barointern;
-			productReference = 0C11F5322D82BFD900F5FF25 /* barointern.app */;
+			productReference = 0CD16C112D82F014006F6B03 /* barointern.app */;
 			productType = "com.apple.product-type.application";
 		};
 		0C11F54A2D82BFDA00F5FF25 /* barointernTests */ = {
 			isa = PBXNativeTarget;
 			buildConfigurationList = 0C11F5632D82BFDA00F5FF25 /* Build configuration list for PBXNativeTarget "barointernTests" */;
 			buildPhases = (
+				0B158EE633E03CC2FC9EA78B /* [CP] Check Pods Manifest.lock */,
 				0C11F5472D82BFDA00F5FF25 /* Sources */,
 				0C11F5482D82BFDA00F5FF25 /* Frameworks */,
 				0C11F5492D82BFDA00F5FF25 /* Resources */,
@@ -147,19 +183,19 @@
 				0C11F54E2D82BFDA00F5FF25 /* barointernTests */,
 			);
 			name = barointernTests;
-			packageProductDependencies = (
-			);
 			productName = barointernTests;
-			productReference = 0C11F54B2D82BFDA00F5FF25 /* barointernTests.xctest */;
+			productReference = 0CD16C122D82F014006F6B03 /* barointernTests.xctest */;
 			productType = "com.apple.product-type.bundle.unit-test";
 		};
 		0C11F5542D82BFDA00F5FF25 /* barointernUITests */ = {
 			isa = PBXNativeTarget;
 			buildConfigurationList = 0C11F5662D82BFDA00F5FF25 /* Build configuration list for PBXNativeTarget "barointernUITests" */;
 			buildPhases = (
+				8CD2D893ED0D9B53558B74E0 /* [CP] Check Pods Manifest.lock */,
 				0C11F5512D82BFDA00F5FF25 /* Sources */,
 				0C11F5522D82BFDA00F5FF25 /* Frameworks */,
 				0C11F5532D82BFDA00F5FF25 /* Resources */,
+				383590CAE73C881D16997745 /* [CP] Embed Pods Frameworks */,
 			);
 			buildRules = (
 			);
@@ -170,10 +206,8 @@
 				0C11F5582D82BFDA00F5FF25 /* barointernUITests */,
 			);
 			name = barointernUITests;
-			packageProductDependencies = (
-			);
 			productName = barointernUITests;
-			productReference = 0C11F5552D82BFDA00F5FF25 /* barointernUITests.xctest */;
+			productReference = 0CD16C132D82F014006F6B03 /* barointernUITests.xctest */;
 			productType = "com.apple.product-type.bundle.ui-testing";
 		};
 /* End PBXNativeTarget section */
@@ -209,7 +243,7 @@
 			mainGroup = 0C11F5292D82BFD900F5FF25;
 			minimizedProjectReferenceProxies = 1;
 			preferredProjectObjectVersion = 77;
-			productRefGroup = 0C11F5332D82BFD900F5FF25 /* Products */;
+			productRefGroup = 0C11F5292D82BFD900F5FF25;
 			projectDirPath = "";
 			projectRoot = "";
 			targets = (
@@ -243,6 +277,109 @@
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXResourcesBuildPhase section */
+
+/* Begin PBXShellScriptBuildPhase section */
+		0B158EE633E03CC2FC9EA78B /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-barointernTests-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
+		383590CAE73C881D16997745 /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-barointern-barointernUITests/Pods-barointern-barointernUITests-frameworks-${CONFIGURATION}-input-files.xcfilelist",
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-barointern-barointernUITests/Pods-barointern-barointernUITests-frameworks-${CONFIGURATION}-output-files.xcfilelist",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-barointern-barointernUITests/Pods-barointern-barointernUITests-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		8CD2D893ED0D9B53558B74E0 /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-barointern-barointernUITests-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
+		8D16A556C947206121305650 /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-barointern-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
+		D5CEEBBFD3709B75AE84DF10 /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-barointern/Pods-barointern-frameworks-${CONFIGURATION}-input-files.xcfilelist",
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-barointern/Pods-barointern-frameworks-${CONFIGURATION}-output-files.xcfilelist",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-barointern/Pods-barointern-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+/* End PBXShellScriptBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
 		0C11F52E2D82BFD900F5FF25 /* Sources */ = {
@@ -284,6 +421,7 @@
 /* Begin XCBuildConfiguration section */
 		0C11F55F2D82BFDA00F5FF25 /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 645E23AC637FDDBD53A8CF85 /* Pods-barointern.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
@@ -311,6 +449,7 @@
 		};
 		0C11F5602D82BFDA00F5FF25 /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 778128F7071A6CFD8708F2EA /* Pods-barointern.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
@@ -373,7 +512,7 @@
 				DEBUG_INFORMATION_FORMAT = dwarf;
 				ENABLE_STRICT_OBJC_MSGSEND = YES;
 				ENABLE_TESTABILITY = YES;
-				ENABLE_USER_SCRIPT_SANDBOXING = YES;
+				ENABLE_USER_SCRIPT_SANDBOXING = NO;
 				GCC_C_LANGUAGE_STANDARD = gnu17;
 				GCC_DYNAMIC_NO_PIC = NO;
 				GCC_NO_COMMON_BLOCKS = YES;
@@ -436,7 +575,7 @@
 				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
 				ENABLE_NS_ASSERTIONS = NO;
 				ENABLE_STRICT_OBJC_MSGSEND = YES;
-				ENABLE_USER_SCRIPT_SANDBOXING = YES;
+				ENABLE_USER_SCRIPT_SANDBOXING = NO;
 				GCC_C_LANGUAGE_STANDARD = gnu17;
 				GCC_NO_COMMON_BLOCKS = YES;
 				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
@@ -457,6 +596,7 @@
 		};
 		0C11F5642D82BFDA00F5FF25 /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = B8D4692610EF477CE9219DD9 /* Pods-barointernTests.debug.xcconfig */;
 			buildSettings = {
 				BUNDLE_LOADER = "$(TEST_HOST)";
 				CODE_SIGN_STYLE = Automatic;
@@ -476,6 +616,7 @@
 		};
 		0C11F5652D82BFDA00F5FF25 /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 17356537EE3D77372D6AD008 /* Pods-barointernTests.release.xcconfig */;
 			buildSettings = {
 				BUNDLE_LOADER = "$(TEST_HOST)";
 				CODE_SIGN_STYLE = Automatic;
@@ -495,6 +636,7 @@
 		};
 		0C11F5672D82BFDA00F5FF25 /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 9A9DE5111F21678A04AF59D8 /* Pods-barointern-barointernUITests.debug.xcconfig */;
 			buildSettings = {
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
@@ -512,6 +654,7 @@
 		};
 		0C11F5682D82BFDA00F5FF25 /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 06C2B88D5F38C4F224D1F500 /* Pods-barointern-barointernUITests.release.xcconfig */;
 			buildSettings = {
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;

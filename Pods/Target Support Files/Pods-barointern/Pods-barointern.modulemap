@@ -1,0 +1,6 @@
+framework module Pods_barointern {
+  umbrella header "Pods-barointern-umbrella.h"
+
+  export *
+  module * { export * }
+}

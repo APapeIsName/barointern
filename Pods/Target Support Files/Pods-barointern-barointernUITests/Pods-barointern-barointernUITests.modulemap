@@ -1,0 +1,6 @@
+framework module Pods_barointern_barointernUITests {
+  umbrella header "Pods-barointern-barointernUITests-umbrella.h"
+
+  export *
+  module * { export * }
+}
