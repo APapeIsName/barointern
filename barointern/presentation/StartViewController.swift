@@ -28,13 +28,8 @@ class StartViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        addSubViews()
+        view.addSubViews(logoImageView, startButton)
         setLayout()
-    }
-    
-    private func addSubViews() {
-        view.addSubview(logoImageView)
-        view.addSubview(startButton)
     }
     
     private func setLayout() {

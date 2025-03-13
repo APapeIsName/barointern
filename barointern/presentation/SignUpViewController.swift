@@ -16,15 +16,15 @@ final class SignUpViewController: UIViewController {
     private let passwordTextField: UITextField = .init()
     private let checkPasswordTextField: UITextField = .init()
     private let nicknameTextField: UITextField = .init()
+    private let signUpButton: UIButton = .init(type: .system)
     
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        
     }
     
     private func addSubViews() {
-        
+        view.addSubview(emailTextField)
     }
     
     private func setLayout() {
