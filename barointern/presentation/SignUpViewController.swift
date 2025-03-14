@@ -16,17 +16,17 @@ final class SignUpViewController: UIViewController, BarointernUiViewProtocol {
     private let passwordTextField: UITextField = UITextField().setSignUpStyle(placeholder: "비밀번호")
     private let checkPasswordTextField: UITextField = UITextField().setSignUpStyle(placeholder: "비밀번호 확인")
     private let nicknameTextField: UITextField = UITextField().setSignUpStyle(placeholder: "닉네임")
-    private let signUpButton: UIButton = UIButton().setSignUpStyle()
+    private let signUpButton: UIButton = UIButton().setSignUpStyle(handle: #selector(handleSignUp))
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        
-        view.addSubViews(signUpLabel, emailTextField, passwordTextField, checkPasswordTextField, nicknameTextField, signUpButton)
         
         setLayout()
     }
     
     internal func setLayout() {
+        view.addSubViews(signUpLabel, emailTextField, passwordTextField, checkPasswordTextField, nicknameTextField, signUpButton)
+        
         view.backgroundColor = .systemBackground
         makeViewConstraints()
     }
@@ -63,6 +63,10 @@ final class SignUpViewController: UIViewController, BarointernUiViewProtocol {
             make.bottom.equalTo(view.safeAreaLayoutGuide.snp.bottom).offset(-20)
         }
     }
+    
+    @objc func handleSignUp() {
+        print("가입 확인")
+    }
 }
 
 #Preview {
@@ -89,26 +93,16 @@ extension ConstraintViewDSL {
         }
         self.makeDefaultConstraints(view: view)
     }
-    
-    fileprivate func makeDefaultConstraints(view: UIView) {
-        self.makeConstraints { make in
-            make.leading.equalTo(view.safeAreaLayoutGuide.snp.leading).offset(20)
-            make.trailing.equalTo(view.safeAreaLayoutGuide.snp.trailing).offset(-20)
-        }
-    }
 }
 
 extension UIButton {
-    fileprivate func setSignUpStyle() -> UIButton {
+    fileprivate func setSignUpStyle(handle: Selector) -> UIButton {
         return self.then {
             uiButton in
             uiButton.setTitle("회원가입", for: .normal)
             uiButton.backgroundColor = .systemBlue
-            uiButton.addTarget(self, action: #selector(handleSignUp), for: .touchUpInside)
+            uiButton.addTarget(self, action: handle, for: .touchUpInside)
         }
-    }
-    @objc func handleSignUp() {
-        print("가입 확인")
     }
 }
 

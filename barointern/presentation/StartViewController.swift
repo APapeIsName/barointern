@@ -11,15 +11,7 @@ import Then
 
 class StartViewController: UIViewController, BarointernUiViewProtocol {
     
-    private let logoImageView: UIImageView = UIImageView().then { uiImage in
-        uiImage.image = UIImage(named: "barogochim")
-        uiImage.adjustsImageSizeForAccessibilityContentSizeCategory = false
-        uiImage.contentMode = .scaleAspectFit
-        uiImage.layer.cornerRadius = 10
-        uiImage.layer.shadowOffset = CGSize(width: 5, height: 5)
-        uiImage.layer.shadowRadius = 5
-        uiImage.layer.shadowOpacity = 0.5
-    }
+    private let logoImageView: UIImageView = UIImageView().setLogo()
     private let startButton = UIButton(type: .system).then {
         uiButton in
         uiButton.setTitle("바로 시작하기", for: .normal)

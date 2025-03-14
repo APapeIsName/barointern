@@ -6,11 +6,22 @@
 //
 
 import UIKit
+import SnapKit
 
 extension UIView {
     func addSubViews(_ views: UIView...) {
         views.forEach {
-            self.addSubview($0)
+            subView in
+            self.addSubview(subView)
+        }
+    }
+}
+
+extension ConstraintViewDSL  {
+    internal func makeDefaultConstraints(view: UIView) {
+        self.makeConstraints { make in
+            make.leading.equalTo(view.safeAreaLayoutGuide.snp.leading).offset(20)
+            make.trailing.equalTo(view.safeAreaLayoutGuide.snp.trailing).offset(-20)
         }
     }
 }
