@@ -9,7 +9,7 @@ import UIKit
 import SnapKit
 import Then
 
-class StartViewController: UIViewController {
+class StartViewController: UIViewController, BarointernUiViewProtocol {
     
     private let logoImageView: UIImageView = UIImageView().then { uiImage in
         uiImage.image = UIImage(named: "barogochim")
@@ -21,8 +21,9 @@ class StartViewController: UIViewController {
         uiImage.layer.shadowOpacity = 0.5
     }
     private let startButton = UIButton(type: .system).then {
-        $0.setTitle("바로 시작하기", for: .normal)
-        $0.titleLabel?.font = .systemFont(ofSize: 20, weight: .bold)
+        uiButton in
+        uiButton.setTitle("바로 시작하기", for: .normal)
+        uiButton.titleLabel?.font = .systemFont(ofSize: 20, weight: .bold)
     }
 
     override func viewDidLoad() {
@@ -32,9 +33,13 @@ class StartViewController: UIViewController {
         setLayout()
     }
     
-    private func setLayout() {
+    internal func setLayout() {
         view.backgroundColor = .systemBackground
         
+        makeViewConstraints()
+    }
+    
+    internal func makeViewConstraints() {
         logoImageView.snp.makeConstraints { make in
             make.width.equalTo(400)
             make.height.equalTo(200)
