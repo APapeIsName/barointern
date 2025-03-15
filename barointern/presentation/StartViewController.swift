@@ -10,7 +10,7 @@ import SnapKit
 import Then
 
 class StartViewController: UIViewController, BarointernUiViewProtocol {
-    
+    private let isLogin: Bool = false
     private let logoImageView: UIImageView = UIImageView().setLogo()
     private let startButton = UIButton(type: .system).setStartStyle()
 
@@ -45,7 +45,11 @@ class StartViewController: UIViewController, BarointernUiViewProtocol {
     }
 
     @objc func handleStartButton() {
-        doSafetyPushViewController(notSafeNavController: navigationController, viewController: SignUpViewController())
+        if(isLogin) {
+            doSafetyPushViewController(notSafeNavController: navigationController, viewController: WelcomeViewController())
+        } else {
+            doSafetyPushViewController(notSafeNavController: navigationController, viewController: SignUpViewController())
+        }
     }
     
 }

@@ -9,7 +9,7 @@ import UIKit
 import SnapKit
 import Then
 
-class LoginSuccessViewController: UIViewController, BarointernUiViewProtocol {
+class WelcomeViewController: UIViewController, BarointernUiViewProtocol {
     private var nickname: String = "페잎"
     
     private let logoImageView: UIImageView = UIImageView().setLogo()
@@ -88,5 +88,5 @@ extension UILabel {
 }
 
 #Preview {
-    LoginSuccessViewController()
+    WelcomeViewController()
 }

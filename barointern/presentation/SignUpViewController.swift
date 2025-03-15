@@ -8,9 +8,11 @@
 import UIKit
 import SnapKit
 import Then
+import CoreData
 
 final class SignUpViewController: UIViewController, BarointernUiViewProtocol {
-    
+    private var nsContainer : NSPersistentContainer!
+    private var userObject: NSManagedObject!
     private let signUpLabel: UILabel = UILabel().setSignUpStyle()
     private let emailTextField: UITextField = UITextField().setSignUpStyle(placeholder: "이메일")
     private let passwordTextField: UITextField = UITextField().setSignUpStyle(placeholder: "비밀번호")
@@ -20,13 +22,22 @@ final class SignUpViewController: UIViewController, BarointernUiViewProtocol {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        let entity = createEntity()
+        userObject = NSManagedObject(entity: entity, insertInto: self.nsContainer.viewContext)
+        
         signUpButton.addTarget(self, action: #selector(handleSignUp), for: .touchUpInside)
+        emailTextField.addTarget(self, action: #selector(setSignUpEnable), for: .editingChanged)
+        passwordTextField.addTarget(self, action: #selector(setSignUpEnable), for: .editingChanged)
+        checkPasswordTextField.addTarget(self, action: #selector(setSignUpEnable), for: .editingChanged)
+        nicknameTextField.addTarget(self, action: #selector(setSignUpEnable), for: .editingChanged)
         setLayout()
         
     }
     
     internal func setLayout() {
         view.addSubViews(signUpLabel, emailTextField, passwordTextField, checkPasswordTextField, nicknameTextField, signUpButton)
+        
+        signUpButton.setDisable()
         
         view.backgroundColor = .systemBackground
         makeViewConstraints()
@@ -65,11 +76,45 @@ final class SignUpViewController: UIViewController, BarointernUiViewProtocol {
         }
     }
     
-    @objc func handleSignUp() {
+    @objc func handleSignUp(action: Selector) {
         if let navController = navigationController {
-            navController.setViewControllers([LoginSuccessViewController()], animated: true)
+            let id = emailTextField.text!
+            let password = passwordTextField.text!
+            let nickname = nicknameTextField.text!
+            saveUserData(userObject: userObject, userInfo: User(id: id, password: password, nickname: nickname))
+            navController.setViewControllers([WelcomeViewController()], animated: true)
         } else {
             print("navController is nil")
+        }
+    }
+    
+    @objc func setSignUpEnable() {
+        if (
+            checkValidEmail(email: emailTextField.text!)
+            && checkValidPassword(password: passwordTextField.text!)
+            && checkValidPasswordEqual(checkPassword: checkPasswordTextField.text!, password: passwordTextField.text!)
+            && !nicknameTextField.text!.isEmpty
+        ) {
+            signUpButton.setEnable()
+        } else {
+            signUpButton.setDisable()
+        }
+    }
+    
+    func createEntity() -> NSEntityDescription {
+        let appDelegate = UIApplication.shared.delegate as! AppDelegate
+        self.nsContainer = appDelegate.persistentContainer
+        return NSEntityDescription.entity(forEntityName: "UserEntity", in: self.nsContainer.viewContext)!
+    }
+    
+    func saveUserData(userObject: NSManagedObject, userInfo: User) {
+        userObject.setValue(userInfo.id, forKey: "id")
+        userObject.setValue(userInfo.password, forKey: "password")
+        userObject.setValue(userInfo.nickname, forKey: "name")
+        do {
+            try self.nsContainer.viewContext.save()
+        } catch {
+            print(error.localizedDescription)
         }
     }
 }
@@ -105,7 +150,22 @@ extension UIButton {
         return self.then {
             uiButton in
             uiButton.setTitle("회원가입", for: .normal)
+        }
+    }
+    
+    fileprivate func setEnable() {
+        self.then {
+            uiButton in
             uiButton.backgroundColor = .systemBlue
+            uiButton.isEnabled = false
+        }
+    }
+    
+    fileprivate func setDisable() {
+        self.then {
+            uiButton in
+            uiButton.backgroundColor = .systemGray
+            uiButton.isEnabled = false
         }
     }
 }
