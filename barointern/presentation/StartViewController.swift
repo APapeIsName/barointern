@@ -12,11 +12,7 @@ import Then
 class StartViewController: UIViewController, BarointernUiViewProtocol {
     
     private let logoImageView: UIImageView = UIImageView().setLogo()
-    private let startButton = UIButton(type: .system).then {
-        uiButton in
-        uiButton.setTitle("바로 시작하기", for: .normal)
-        uiButton.titleLabel?.font = .systemFont(ofSize: 20, weight: .bold)
-    }
+    private let startButton = UIButton(type: .system).setStartStyle()
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -28,6 +24,7 @@ class StartViewController: UIViewController, BarointernUiViewProtocol {
     internal func setLayout() {
         view.backgroundColor = .systemBackground
         
+        startButton.addTarget(self, action: #selector(handleStartButton), for: .touchUpInside)
         makeViewConstraints()
     }
     
@@ -47,6 +44,24 @@ class StartViewController: UIViewController, BarointernUiViewProtocol {
         }
     }
 
+    @objc func handleStartButton() {
+        if let navController = navigationController {
+            navController.pushViewController(SignUpViewController(), animated: true)
+        } else {
+            print("navController is nil")
+        }
+    }
+    
+}
+
+extension UIButton {
+    fileprivate func setStartStyle() -> UIButton {
+        return self.then {
+            uiButton in
+            uiButton.setTitle("바로 시작하기", for: .normal)
+            uiButton.titleLabel?.font = .systemFont(ofSize: 20, weight: .bold)
+        }
+    }
 }
 
 #Preview {

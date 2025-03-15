@@ -16,12 +16,13 @@ final class SignUpViewController: UIViewController, BarointernUiViewProtocol {
     private let passwordTextField: UITextField = UITextField().setSignUpStyle(placeholder: "비밀번호")
     private let checkPasswordTextField: UITextField = UITextField().setSignUpStyle(placeholder: "비밀번호 확인")
     private let nicknameTextField: UITextField = UITextField().setSignUpStyle(placeholder: "닉네임")
-    private let signUpButton: UIButton = UIButton().setSignUpStyle(handle: #selector(handleSignUp))
+    private let signUpButton: UIButton = UIButton().setSignUpStyle()
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        
+        signUpButton.addTarget(self, action: #selector(handleSignUp), for: .touchUpInside)
         setLayout()
+        
     }
     
     internal func setLayout() {
@@ -96,12 +97,11 @@ extension ConstraintViewDSL {
 }
 
 extension UIButton {
-    fileprivate func setSignUpStyle(handle: Selector) -> UIButton {
+    fileprivate func setSignUpStyle() -> UIButton {
         return self.then {
             uiButton in
             uiButton.setTitle("회원가입", for: .normal)
             uiButton.backgroundColor = .systemBlue
-            uiButton.addTarget(self, action: handle, for: .touchUpInside)
         }
     }
 }

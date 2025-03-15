@@ -14,12 +14,13 @@ class LoginSuccessViewController: UIViewController, BarointernUiViewProtocol {
     
     private let logoImageView: UIImageView = UIImageView().setLogo()
     private lazy var welcomeLabel: UILabel = UILabel().setLoginSuccessStyle(text: "\(nickname) 님,\n 환영합니다")
-    private let logoutButton: UIButton = UIButton().setLoginSuccessStyle(title: "로그아웃", color: .systemGray, handle: #selector(handleLogout))
-    private let deleteIdButton: UIButton = UIButton().setLoginSuccessStyle(title: "회원 탈퇴", color: .systemRed, handle: #selector(handleDeleteID))
+    private let logoutButton: UIButton = UIButton().setLoginSuccessStyle(title: "로그아웃", color: .systemGray)
+    private let deleteIdButton: UIButton = UIButton().setLoginSuccessStyle(title: "회원 탈퇴", color: .systemRed)
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        
+        logoutButton.addTarget(self, action: #selector(handleLogout), for: .touchUpInside)
+        deleteIdButton.addTarget(self, action: #selector(handleDeleteID), for: .touchUpInside)
         setLayout()
     }
     
@@ -63,12 +64,11 @@ class LoginSuccessViewController: UIViewController, BarointernUiViewProtocol {
 }
 
 extension UIButton {
-    fileprivate func setLoginSuccessStyle(title: String, color: UIColor, handle: Selector) -> UIButton {
+    fileprivate func setLoginSuccessStyle(title: String, color: UIColor) -> UIButton {
         return self.then {
             uiButton in
             uiButton.setTitleColor(color, for: .normal)
             uiButton.setTitle(title, for: .normal)
-            uiButton.addTarget(self, action: handle, for: .touchUpInside)
         }
     }
 }
