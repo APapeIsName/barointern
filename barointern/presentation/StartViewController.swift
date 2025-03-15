@@ -45,11 +45,7 @@ class StartViewController: UIViewController, BarointernUiViewProtocol {
     }
 
     @objc func handleStartButton() {
-        if let navController = navigationController {
-            navController.pushViewController(SignUpViewController(), animated: true)
-        } else {
-            print("navController is nil")
-        }
+        doSafetyPushViewController(notSafeNavController: navigationController, viewController: SignUpViewController())
     }
     
 }

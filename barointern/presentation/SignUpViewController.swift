@@ -66,7 +66,11 @@ final class SignUpViewController: UIViewController, BarointernUiViewProtocol {
     }
     
     @objc func handleSignUp() {
-        print("가입 확인")
+        if let navController = navigationController {
+            navController.setViewControllers([LoginSuccessViewController()], animated: true)
+        } else {
+            print("navController is nil")
+        }
     }
 }
 

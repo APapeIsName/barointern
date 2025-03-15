@@ -55,10 +55,12 @@ class LoginSuccessViewController: UIViewController, BarointernUiViewProtocol {
     }
     
     @objc private func handleLogout() {
+        doSafetySetViewControllers(notSafeNavController: navigationController, viewControllers: [StartViewController()])
         print("로그아웃")
     }
     
     @objc private func handleDeleteID() {
+        doSafetySetViewControllers(notSafeNavController: navigationController, viewControllers: [StartViewController()])
         print("회원 탈퇴")
     }
 }
