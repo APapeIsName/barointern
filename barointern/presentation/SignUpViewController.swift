@@ -108,9 +108,20 @@ final class SignUpViewController: UIViewController, BarointernUiViewProtocol {
     }
     
     func saveUserData(userObject: NSManagedObject, userInfo: User) {
+        do {
+            let content = try self.nsContainer.viewContext.fetch(UserEntity.fetchRequest()) as! [UserEntity]
+            content.forEach {
+                if(!($0.id!.isEmpty || $0.nickname!.isEmpty || $0.password!.isEmpty)) {
+                    if($0.id == userInfo.id) { return }
+                }
+            }
+        } catch {
+            print(error.localizedDescription)
+        }
+        
         userObject.setValue(userInfo.id, forKey: "id")
         userObject.setValue(userInfo.password, forKey: "password")
-        userObject.setValue(userInfo.nickname, forKey: "name")
+        userObject.setValue(userInfo.nickname, forKey: "nickname")
         do {
             try self.nsContainer.viewContext.save()
         } catch {
@@ -157,7 +168,7 @@ extension UIButton {
         self.then {
             uiButton in
             uiButton.backgroundColor = .systemBlue
-            uiButton.isEnabled = false
+            uiButton.isEnabled = true
         }
     }
     

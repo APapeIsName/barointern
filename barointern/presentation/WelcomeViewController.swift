@@ -8,12 +8,13 @@
 import UIKit
 import SnapKit
 import Then
+import CoreData
 
 class WelcomeViewController: UIViewController, BarointernUiViewProtocol {
-    private var nickname: String = "페잎"
-    
+    private var nsContainer : NSPersistentContainer!
+    private var nickname: String = "사용자"
     private let logoImageView: UIImageView = UIImageView().setLogo()
-    private lazy var welcomeLabel: UILabel = UILabel().setLoginSuccessStyle(text: "\(nickname) 님,\n 환영합니다")
+    private var welcomeLabel: UILabel = UILabel()
     private let logoutButton: UIButton = UIButton().setLoginSuccessStyle(title: "로그아웃", color: .systemGray)
     private let deleteIdButton: UIButton = UIButton().setLoginSuccessStyle(title: "회원 탈퇴", color: .systemRed)
     
@@ -26,6 +27,19 @@ class WelcomeViewController: UIViewController, BarointernUiViewProtocol {
     
     internal func setLayout() {
         view.addSubViews(logoImageView, welcomeLabel, logoutButton, deleteIdButton)
+        setNSContainer()
+        do {
+            let content = try self.nsContainer.viewContext.fetch(UserEntity.fetchRequest()) as! [UserEntity]
+            content.forEach {
+                if(!($0.id!.isEmpty || $0.nickname!.isEmpty || $0.password!.isEmpty)) {
+                    nickname = $0.nickname!
+                }
+            }
+        } catch {
+            print(error.localizedDescription)
+        }
+        
+        welcomeLabel = welcomeLabel.setLoginSuccessStyle(text: "\(nickname) 님,\n 환영합니다")
         
         view.backgroundColor = .systemBackground
         makeViewConstraints()
@@ -52,6 +66,11 @@ class WelcomeViewController: UIViewController, BarointernUiViewProtocol {
             make.bottom.equalTo(view.safeAreaLayoutGuide.snp.bottom).inset(60)
             make.trailing.equalTo(view.safeAreaLayoutGuide.snp.trailing).inset(80)
         }
+    }
+    
+    func setNSContainer() {
+        let appDelegate = UIApplication.shared.delegate as! AppDelegate
+        self.nsContainer = appDelegate.persistentContainer
     }
     
     @objc private func handleLogout() {
