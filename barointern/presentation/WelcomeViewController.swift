@@ -28,16 +28,8 @@ class WelcomeViewController: UIViewController, BarointernUiViewProtocol {
     internal func setLayout() {
         view.addSubViews(logoImageView, welcomeLabel, logoutButton, deleteIdButton)
         setNSContainer()
-        do {
-            let content = try self.nsContainer.viewContext.fetch(UserEntity.fetchRequest()) as! [UserEntity]
-            content.forEach {
-                if(!($0.id!.isEmpty || $0.nickname!.isEmpty || $0.password!.isEmpty)) {
-                    nickname = $0.nickname!
-                }
-            }
-        } catch {
-            print(error.localizedDescription)
-        }
+        
+        nickname = UserDefaults.standard.string(forKey: "nickname") ?? "사용자"
         
         welcomeLabel = welcomeLabel.setLoginSuccessStyle(text: "\(nickname) 님,\n 환영합니다")
         

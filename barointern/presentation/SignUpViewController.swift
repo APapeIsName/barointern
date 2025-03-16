@@ -19,6 +19,7 @@ final class SignUpViewController: UIViewController, BarointernUiViewProtocol {
     private let checkPasswordTextField: UITextField = UITextField().setSignUpStyle(placeholder: "비밀번호 확인")
     private let nicknameTextField: UITextField = UITextField().setSignUpStyle(placeholder: "닉네임")
     private let signUpButton: UIButton = UIButton().setSignUpStyle()
+    private let signUpStateLabel: UILabel = UILabel().setSignUpStateStyle()
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -35,7 +36,7 @@ final class SignUpViewController: UIViewController, BarointernUiViewProtocol {
     }
     
     internal func setLayout() {
-        view.addSubViews(signUpLabel, emailTextField, passwordTextField, checkPasswordTextField, nicknameTextField, signUpButton)
+        view.addSubViews(signUpLabel, emailTextField, passwordTextField, checkPasswordTextField, nicknameTextField, signUpButton, signUpStateLabel)
         
         signUpButton.setDisable()
         
@@ -50,6 +51,7 @@ final class SignUpViewController: UIViewController, BarointernUiViewProtocol {
         checkPasswordTextField.snp.makeTextFieldDefaultConstraints(view: view)
         nicknameTextField.snp.makeTextFieldDefaultConstraints(view: view)
         signUpButton.snp.makeDefaultConstraints(view: view)
+        signUpStateLabel.snp.makeDefaultConstraints(view: view)
         
         signUpLabel.snp.makeConstraints { make in
             make.top.equalTo(view.safeAreaLayoutGuide.snp.top).offset(60)
@@ -74,21 +76,20 @@ final class SignUpViewController: UIViewController, BarointernUiViewProtocol {
             make.height.equalTo(50)
             make.bottom.equalTo(view.safeAreaLayoutGuide.snp.bottom).offset(-20)
         }
-    }
-    
-    @objc func handleSignUp(action: Selector) {
-        if let navController = navigationController {
-            let id = emailTextField.text!
-            let password = passwordTextField.text!
-            let nickname = nicknameTextField.text!
-            saveUserData(userObject: userObject, userInfo: User(id: id, password: password, nickname: nickname))
-            navController.setViewControllers([WelcomeViewController()], animated: true)
-        } else {
-            print("navController is nil")
+        signUpStateLabel.snp.makeConstraints { make in
+            make.top.equalTo(nicknameTextField.snp.bottom).offset(60)
         }
     }
     
+    @objc func handleSignUp(action: Selector) {
+        let id = emailTextField.text!
+        let password = passwordTextField.text!
+        let nickname = nicknameTextField.text!
+        saveUserData(userObject: userObject, userInfo: User(id: id, password: password, nickname: nickname))
+    }
+    
     @objc func setSignUpEnable() {
+        signUpStateLabel.isHidden = true
         if (
             checkValidEmail(email: emailTextField.text!)
             && checkValidPassword(password: passwordTextField.text!)
@@ -101,6 +102,14 @@ final class SignUpViewController: UIViewController, BarointernUiViewProtocol {
         }
     }
     
+    func navigateToWelcomeViewController() {
+        if let navController = navigationController {
+            navController.setViewControllers([WelcomeViewController()], animated: true)
+        } else {
+            print("navController is nil")
+        }
+    }
+    
     func createEntity() -> NSEntityDescription {
         let appDelegate = UIApplication.shared.delegate as! AppDelegate
         self.nsContainer = appDelegate.persistentContainer
@@ -108,22 +117,24 @@ final class SignUpViewController: UIViewController, BarointernUiViewProtocol {
     }
     
     func saveUserData(userObject: NSManagedObject, userInfo: User) {
-        do {
-            let content = try self.nsContainer.viewContext.fetch(UserEntity.fetchRequest()) as! [UserEntity]
-            content.forEach {
-                if(!($0.id!.isEmpty || $0.nickname!.isEmpty || $0.password!.isEmpty)) {
-                    if($0.id == userInfo.id) { return }
-                }
+        var isDuplicated = false
+        let userList = getUserListFromData(container: self.nsContainer)
+        userList.forEach {
+            if($0.id == userInfo.id) {
+                signUpStateLabel.isHidden = false
+                isDuplicated = true
             }
-        } catch {
-            print(error.localizedDescription)
         }
-        
+        if(isDuplicated) { return }
         userObject.setValue(userInfo.id, forKey: "id")
         userObject.setValue(userInfo.password, forKey: "password")
         userObject.setValue(userInfo.nickname, forKey: "nickname")
         do {
             try self.nsContainer.viewContext.save()
+            UserDefaults.standard.set(userInfo.id, forKey: "id")
+            UserDefaults.standard.set(userInfo.password, forKey: "password")
+            UserDefaults.standard.set(userInfo.nickname, forKey: "nickname")
+            navigateToWelcomeViewController()
         } catch {
             print(error.localizedDescription)
         }
@@ -184,11 +195,22 @@ extension UIButton {
 extension UILabel {
     fileprivate func setSignUpStyle() -> UILabel {
         return self.then {
-            uiText in
-            uiText.text = "이메일과 비밀번호,\n닉네임을 입력해주세요."
-            uiText.font = .systemFont(ofSize: 24, weight: .black)
-            uiText.textColor = .black
-            uiText.numberOfLines = 2
+            uiLabel in
+            uiLabel.text = "이메일과 비밀번호,\n닉네임을 입력해주세요."
+            uiLabel.font = .systemFont(ofSize: 24, weight: .black)
+            uiLabel.textColor = .black
+            uiLabel.numberOfLines = 2
+        }
+    }
+    
+    fileprivate func setSignUpStateStyle() -> UILabel {
+        return self.then {
+            uiLabel in
+            uiLabel.isHidden = true
+            uiLabel.text = "중복된 이메일이 존재합니다."
+            uiLabel.textColor = .red
+            uiLabel.numberOfLines = 1
+            uiLabel.font = .systemFont(ofSize: 14, weight: .regular)
         }
     }
 }
