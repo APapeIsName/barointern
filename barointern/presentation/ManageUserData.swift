@@ -7,6 +7,10 @@
 
 import CoreData
 
+func addDefaultUserData(container: NSPersistentContainer) {
+    
+}
+
 func getUserListFromData(container: NSPersistentContainer) -> [User] {
     var userList = [User]()
     do {
@@ -21,4 +25,19 @@ func getUserListFromData(container: NSPersistentContainer) -> [User] {
         print(error.localizedDescription)
     }
     return userList
+}
+
+func deleteUserFromData(container: NSPersistentContainer, user: User) {
+    let fetchRequest: NSFetchRequest<UserEntity> = UserEntity.fetchRequest()
+    fetchRequest.predicate = NSPredicate(format: "id == %@", user.id)
+    do {
+        let userList = try container.viewContext.fetch(fetchRequest)
+        if let user = userList.first {
+            container.viewContext.delete(user)
+            try container.viewContext.save()
+        }
+        print("회원탈퇴")
+    } catch {
+        print(error.localizedDescription)
+    }
 }

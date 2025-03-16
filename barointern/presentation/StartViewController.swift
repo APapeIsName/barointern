@@ -12,12 +12,13 @@ import Then
 class StartViewController: UIViewController, BarointernUiViewProtocol {
     private var isLogin: Bool = false
     private let logoImageView: UIImageView = UIImageView().setLogo()
-    private let startButton = UIButton(type: .system).setStartStyle()
+    private let startButton = UIButton(type: .system).setStartStyle(title: "바로 시작하기")
+    private var addNewIdButton = UIButton(type: .system).setStartStyle(title: "새로운 아이디 추가하기")
 
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        view.addSubViews(logoImageView, startButton)
+        view.addSubViews(logoImageView, addNewIdButton, startButton)
         setLayout()
     }
     
@@ -28,7 +29,13 @@ class StartViewController: UIViewController, BarointernUiViewProtocol {
             isLogin = true
         }
         
+        if(isLogin) {
+            addNewIdButton.isHidden = false
+        } else {
+            addNewIdButton.isHidden = true
+        }
         startButton.addTarget(self, action: #selector(handleStartButton), for: .touchUpInside)
+        addNewIdButton.addTarget(self, action: #selector(handleAddNewIdButton), for: .touchUpInside)
         makeViewConstraints()
     }
     
@@ -37,6 +44,12 @@ class StartViewController: UIViewController, BarointernUiViewProtocol {
             make.width.equalTo(400)
             make.height.equalTo(200)
             make.centerY.equalToSuperview().offset(-100)
+            make.leading.equalToSuperview().offset(30)
+            make.trailing.equalToSuperview().offset(-30)
+        }
+        
+        addNewIdButton.snp.makeConstraints { make in
+            make.bottom.equalTo(startButton.snp.top).offset(-30)
             make.leading.equalToSuperview().offset(30)
             make.trailing.equalToSuperview().offset(-30)
         }
@@ -56,13 +69,17 @@ class StartViewController: UIViewController, BarointernUiViewProtocol {
         }
     }
     
+    @objc func handleAddNewIdButton() {
+        doSafetyPushViewController(notSafeNavController: navigationController, viewController: SignUpViewController())
+    }
+    
 }
 
 extension UIButton {
-    fileprivate func setStartStyle() -> UIButton {
+    fileprivate func setStartStyle(title: String) -> UIButton {
         return self.then {
             uiButton in
-            uiButton.setTitle("바로 시작하기", for: .normal)
+            uiButton.setTitle(title, for: .normal)
             uiButton.titleLabel?.font = .systemFont(ofSize: 20, weight: .bold)
         }
     }

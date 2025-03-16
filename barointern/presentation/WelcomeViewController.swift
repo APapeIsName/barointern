@@ -67,12 +67,24 @@ class WelcomeViewController: UIViewController, BarointernUiViewProtocol {
     
     @objc private func handleLogout() {
         doSafetySetViewControllers(notSafeNavController: navigationController, viewControllers: [StartViewController()])
-        print("로그아웃")
     }
     
     @objc private func handleDeleteID() {
-        doSafetySetViewControllers(notSafeNavController: navigationController, viewControllers: [StartViewController()])
-        print("회원 탈퇴")
+        var isDeletedId = false
+        let localId = (UserDefaults.standard.string(forKey: "id") ?? "").trimmingCharacters(in: .whitespacesAndNewlines)
+        let userList = getUserListFromData(container: self.nsContainer)
+        userList.forEach {
+            if ($0.id.trimmingCharacters(in: .whitespacesAndNewlines) == localId) {
+                print("회원탈퇴진행중...")
+                deleteUserFromData(container: self.nsContainer, user: $0)
+                deleteLocalUserData()
+                isDeletedId = true
+                return
+            }
+        }
+        if(isDeletedId) {
+            doSafetySetViewControllers(notSafeNavController: navigationController, viewControllers: [StartViewController()])
+        }
     }
 }
 
