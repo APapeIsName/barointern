@@ -10,7 +10,7 @@ import SnapKit
 import Then
 
 class StartViewController: UIViewController, BarointernUiViewProtocol {
-    private let isLogin: Bool = false
+    private var isLogin: Bool = false
     private let logoImageView: UIImageView = UIImageView().setLogo()
     private let startButton = UIButton(type: .system).setStartStyle()
 
@@ -23,6 +23,10 @@ class StartViewController: UIViewController, BarointernUiViewProtocol {
     
     internal func setLayout() {
         view.backgroundColor = .systemBackground
+        let loginUserId = UserDefaults.standard.string(forKey: "id") ?? ""
+        if !loginUserId.isEmpty {
+            isLogin = true
+        }
         
         startButton.addTarget(self, action: #selector(handleStartButton), for: .touchUpInside)
         makeViewConstraints()
